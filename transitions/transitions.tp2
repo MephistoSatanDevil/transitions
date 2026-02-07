@@ -35,18 +35,20 @@ ALWAYS
    // Why just converting it once and having the output stored (which happens)
    // is not good enough, I'm not sure I'll ever understand or really believe
    // but who cares, honestly, if it's done once or a thousand times
-   ACTION_DEFINE_ARRAY thismod_noconvert BEGIN setup END
-   ACTION_DEFINE_ARRAY thismod_reload BEGIN game cases END
-
-   LAF HANDLE_CHARSETS 
-      INT_VAR 
-         infer_charsets = 1 
-      STR_VAR 
-         iconv_path = EVAL "%mod_root%/%tra_base%/iconv"
-         tra_path = EVAL "%tra_loc%"
-         noconvert_array = thismod_noconvert
-         reload_array = thismod_reload
-   END
+   
+   // For the EE game, simply use UTF-8.
+   //ACTION_DEFINE_ARRAY thismod_noconvert BEGIN setup END
+   //ACTION_DEFINE_ARRAY thismod_reload BEGIN game cases END
+   //
+   //LAF HANDLE_CHARSETS 
+   //   INT_VAR 
+   //      infer_charsets = 1 
+   //   STR_VAR 
+   //      iconv_path = EVAL "%mod_root%/%tra_base%/iconv"
+   //      tra_path = EVAL "%tra_loc%"
+   //      noconvert_array = thismod_noconvert
+   //      reload_array = thismod_reload
+   //END
 
    ACTION_IF NOT (GAME_IS ~bgee bg2ee eet~) BEGIN
       FAIL @1
@@ -70,7 +72,13 @@ LANGUAGE ~American English~ ~american~
    ~weidu_external/workspace/transitions/languages/american/game.tra~
    ~transitions/languages/american/cases.tra~
    ~weidu_external/workspace/transitions/languages/american/cases.tra~
-
+LANGUAGE ~Chinese~ ~schinese~   
+   ~transitions/languages/schinese/setup.tra~
+   ~weidu_external/workspace/transitions/languages/schinese/setup.tra~
+   ~transitions/languages/schinese/game.tra~
+   ~weidu_external/workspace/transitions/languages/schinese/game.tra~
+   ~transitions/languages/schinese/cases.tra~
+   ~weidu_external/workspace/transitions/languages/schinese/cases.tra~
 ////////////////////////////////////////////////////////////////////////////////////
 // MAIN COMPONENT FOR ALL GAMES: ALLOW CONTINUED PLAY AFTER DEFEAT OF BOSS ENEMY  //
 // OPEN THE PALACE AND MODIFY DUKE BELT TO ALLOW FOR BG1 CONTINUATION             //
